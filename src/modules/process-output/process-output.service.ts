@@ -5,7 +5,7 @@ import { TransformOutput } from './transform-output.interface';
 @Service()
 export class ProcessOutput {
     private filePath: string;
-    private fd: number;
+    private fileDescriptor: number;
     private transform: TransformOutput;
 
     constructor() { }
@@ -18,7 +18,7 @@ export class ProcessOutput {
                 if (err) {
                     reject(err);
                 } else {
-                    this.fd = fd;
+                    this.fileDescriptor = fd;
                     resolve();
                 }
             });
@@ -30,7 +30,7 @@ export class ProcessOutput {
      */
     addLine(columns: string[], vals: string[]): Promise<void> {
         return new Promise((resolve, reject) => {
-            fs.write(this.fd, this.transform.transformOutput(columns, vals), (err) => {
+            fs.write(this.fileDescriptor, this.transform.transformOutput(columns, vals), (err) => {
                 err ? reject(err) : resolve();
             });
         });
@@ -41,7 +41,7 @@ export class ProcessOutput {
      */
     close(): Promise<void> {
         return new Promise((resolve, reject) => {
-            fs.close(this.fd, (err) => {
+            fs.close(this.fileDescriptor, (err) => {
                 err ? reject(err) : resolve();
             });
         });
