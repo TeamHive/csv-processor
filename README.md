@@ -7,7 +7,7 @@ This package handles all of the file I/O as well as recognizing line breaks with
 ### Usage
 To install the package, run:
 ```sh
-npm install --save @teamhive/csv-processor
+npm i @teamhive/csv-processor
 ```
 
 The package itself defines two main export `ProcessInput` and `ProcessOutput`.  Both classes are 
