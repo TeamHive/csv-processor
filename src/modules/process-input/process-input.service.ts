@@ -26,13 +26,13 @@ export class ProcessInput {
                     reject(err);
                 } else {
                     let line = this.getNextString(str, 0, '\n', useSingleQuotes);
-                    this.processHeaders(line.str);
+                    this.processHeaders(line.nextString);
                     let i = line.index + 1;
                     while (!line.done) {
                         line = this.getNextString(str, i, '\n', useSingleQuotes);
                         i = line.index + 1;
                         const vals: string[] = [];
-                        this.processLine(vals, line.str, 0);
+                        this.processLine(vals, line.nextString, 0);
                         if (vals.length > 0) {
                             try {
                                 const transformedInput = transform ?
@@ -63,7 +63,7 @@ export class ProcessInput {
         let i = 0;
         while (i < line.length) {
             const header = this.getNextString(line, i, ',', useSingleQuotes);
-            this.columns.push(header.str);
+            this.columns.push(header.nextString);
             i = header.index + 1;
         }
     }
@@ -78,7 +78,7 @@ export class ProcessInput {
         let i = index;
         while (vals.length < this.columns.length && i >= 0) {
             const val = this.getNextString(line, i, ',', useSingleQuotes);
-            vals.push(val.str);
+            vals.push(val.nextString);
             i = val.index;
             i++;
         }
@@ -92,7 +92,7 @@ export class ProcessInput {
      */
     getNextString(line: string, index: number, delimiter: string, useSingleQuotes?: boolean): NextStringResult {
         let i = index;
-        let str = '';
+        let nextString = '';
         let matchedQuoted = true;
         while (i < line.length) {
             const c = line.charAt(i);
@@ -105,27 +105,27 @@ export class ProcessInput {
             }
             if (isQuote) {
                 matchedQuoted = !matchedQuoted;
-                str += c;
+                nextString += c;
             } else if (c === delimiter) {
                 if (matchedQuoted) {
                     return {
                         done: false,
                         index: i,
-                        str,
+                        nextString,
                     };
                 }
                 else {
-                    str += c;
+                    nextString += c;
                 }
             } else {
-                str += c;
+                nextString += c;
             }
             i++;
         }
         return {
             done: true,
             index: i,
-            str,
+            nextString,
         };
     }
 }
