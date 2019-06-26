@@ -1,0 +1,45 @@
+{
+    "name": "@teamhive/csv-processor",
+    "version": "1.0.0",
+    "description": "csv-processor simplifies reading and transforming CSV data into other formats through TypeDI services.",
+    "keywords": [
+        "TypeDI",
+        "Typescript",
+        "CSV",
+        "Data",
+        "Transformation"
+    ],
+    "license": "ISC",
+    "author": "TeamHive",
+    "contributors": [
+        "Josh Gibson <gibsonjoshua55>"
+    ],
+    "homepage": "https://github.com/TeamHive/csv-processor",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TeamHive/csv-processor.git"
+    },
+    "bugs": {
+        "url": "https://github.com/TeamHive/csv-processor/issues"
+    },
+    "main": "index.js",
+    "typings": "index.d.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "watch": "tsc -w",
+        "start": "tsc",
+        "prepack": "tsc",
+        "postpublish": "git push && git push --tags",
+        "postpack": "rm *.d.ts && rm *.js && rm -Rf modules"
+    },
+    "dependencies": {
+        "@teamhive/typedi-common": "1.0.0",
+        "reflect-metadata": "^0.1.13",
+        "typedi": "^0.8.0"
+    },
+    "devDependencies": {
+        "@types/node": "^12.0.10",
+        "tslint": "^5.18.0",
+        "typescript": "^3.5.2"
+    }
+}
