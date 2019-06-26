@@ -7,7 +7,7 @@ This package handles all of the file I/O as well as recognizing line breaks with
 ### Usage
 To install the package, run:
 ```sh
-npm install --save @teamhive/csv-processor
+npm i @teamhive/csv-processor
 ```
 
 The package itself defines two main export `ProcessInput` and `ProcessOutput`.  Both classes are 
@@ -32,7 +32,7 @@ export interface TransformOutput {
 }
 ```
 
-When using `ProcessOutput`, an implementation of `TransformOutput` must be passed to teh initialize function. A transform is required for output since the arrays must be formatted as a string.
+When using `ProcessOutput`, an implementation of `TransformOutput` must be passed to the initialize function. A transform is required for output since the arrays must be formatted as a string.
 
 #### ProcessInput
 `ProcessInput` is a TypeDi service that reads in a csv file and passses the read input to a `ProcessOutput` instance.  TypeDi handles the injection of contructed `ProcessOuput` instance.
