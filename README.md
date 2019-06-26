@@ -1,4 +1,5 @@
 # @teamhive/csv-processor
+[![npm version](https://badge.fury.io/js/%40teamhive%2Fcsv-processor.svg)](https://badge.fury.io/js/%40teamhive%2Fcsv-processor)
 
 `csv-processor` is a package that simplifies reading and transforming CSV data into other formats through TypeDI services.
 The typical usecase for the package would be converting a CSV file into individual SQL insert statements.
